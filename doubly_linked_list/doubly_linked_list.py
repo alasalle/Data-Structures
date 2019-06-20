@@ -39,6 +39,8 @@ class DoublyLinkedList:
     self.head = node
     self.tail = node
     self.length = 1 if node is not None else 0
+    self.current_max = node.value if node is not None else 0
+    self.prev_max = 0
 
   def __len__(self):
     return self.length
@@ -52,6 +54,9 @@ class DoublyLinkedList:
       self.head.insert_before(value)
       self.head = self.head.prev
     self.length += 1
+    if value > self.current_max:
+      self.prev_max = self.current_max
+      self.current_max = value
 
 
 
@@ -74,6 +79,9 @@ class DoublyLinkedList:
       self.tail.insert_after(value)
       self.tail = self.tail.next
     self.length += 1
+    if value > self.current_max:
+      self.prev_max = self.current_max
+      self.current_max = value
 
 
   def remove_from_tail(self):
@@ -88,22 +96,47 @@ class DoublyLinkedList:
     return value
 
   def move_to_front(self, node):
-    pass
+    if node is self.head:
+      return None
+    
+    self.add_to_head(node.value)
+    if node is self.tail:
+      self.tail = self.tail.next
+      node.delete()
+    self.length -= 1
+
 
   def move_to_end(self, node):
-    pass
+    if node is self.tail:
+      return None
+    self.add_to_tail(node.value)
+    if node is self.head:
+      self.head = self.head.next
+      node.delete()
+    self.length -= 1
 
   def delete(self, node):
     if self.head is self.tail:
       self.head = None
       self.tail = None
-    if self.head is node:
+    elif self.head is node:
       self.head = node.next
       node.delete()
-    if self.tail is node:
+    elif self.tail is node:
       self.tail = node.prev
       node.delete()
+    else:
+      node.delete()
     self.length -= 1
+
     
   def get_max(self):
-    pass
+    if not self.head:
+      return None
+    current_node = self.head
+    max_node = self.head.value
+    while current_node:
+      if current_node.value > max_node:
+        max_node = current_node.value
+      current_node = current_node.next
+    return max_node
