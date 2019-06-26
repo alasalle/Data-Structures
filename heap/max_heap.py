@@ -1,6 +1,6 @@
 class Heap:
   def __init__(self):
-    self.storage = []
+    self.storage = [0]
 
   def insert(self, value):
     pass
@@ -9,7 +9,10 @@ class Heap:
     pass
 
   def get_max(self):
-    pass
+    if self.storage[1]:
+      return self.storage[1]
+    else:
+      return False
 
   def get_size(self):
     pass
