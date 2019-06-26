@@ -16,11 +16,17 @@ Answer the following questions for each of the data structures you implemented a
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
+
+  - The worst case runtime complexity would be O(n)/linear. In an unbalanced bst with only values to the right, insert might have to traverse the entirety of the bst.
 
 2. What is the runtime complexity of `contains`?
 
+  - The worst case runtime complexity would be O(n)/linear. It's possible that contains would have to search the entire bst before arriving at the target value or terminating the search because there is no matching value.
+
 3. What is the runtime complexity of `get_max`? 
+
+  - The worst case runtime complexity would be O(n)/linear in the case of an unbalanced tree.
 
 ## Heap
 
