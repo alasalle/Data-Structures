@@ -22,3 +22,6 @@ class Heap:
 
   def _sift_down(self, index):
     pass
+
+  def _swap(self, i, j):
+  self.storage[i], self.storage[j] = self.storage[j], self.storage[i]
