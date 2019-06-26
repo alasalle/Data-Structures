@@ -15,7 +15,7 @@ class Heap:
       return False
 
   def get_size(self):
-    pass
+    return len(self.storage) - 1
 
   def _bubble_up(self, index):
     pass
@@ -24,4 +24,4 @@ class Heap:
     pass
 
   def _swap(self, i, j):
-  self.storage[i], self.storage[j] = self.storage[j], self.storage[i]
+    self.storage[i], self.storage[j] = self.storage[j], self.storage[i]
