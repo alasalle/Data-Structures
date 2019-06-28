@@ -7,7 +7,15 @@ class Heap:
     self._bubble_up(len(self.storage) - 1)
 
   def delete(self):
-    pass
+    if len(self.storage) > 1:
+      self._swap(0, len(self.storage) - 1)
+      max = self.storage.pop()
+      self._sift_down(0)
+    elif len(self.storage) == 1:
+      max = self.storage.pop()
+    else:
+      max = False
+    return max
 
   def get_max(self):
     if self.storage[0]:
